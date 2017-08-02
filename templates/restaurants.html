@@ -1,0 +1,53 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+{% block content %}
+
+<header>
+    <nav>
+        <h1>Category App</h1>
+    </nav>
+</header>
+
+
+<section>
+    <h2>Categories</h2>
+{% with messages = get_flashed_messages()%}
+    {%if messages%}
+    <ul>
+        {%for message in messages%}
+        <li><strong>{{message}}</strong></li>
+        {%endfor%}
+    </ul>
+    {%endif%}
+    {%endwith%}
+    <ul>
+{% for restaurant in restaurants %}
+
+        <li>
+            <a href="{{ url_for('restaurantMenu', restaurant_id = restaurant.id)}}">{{restaurant.name}}</a>
+            <a href="{{ url_for('deleteRestaurant', restaurant_id = restaurant.id) }}">Delete</a>
+            <a href="{{ url_for('editRestaurant', restaurant_id = restaurant.id) }}">Edit</a>
+        </li>
+{% endfor %}
+    </ul>
+
+    <a class="additem" href="{{url_for('newRestaurant')}}">Add New Restaurant</a>
+</section>
+
+<section>
+    <h1>Recent Items</h1>
+     <ul>
+{% for item in items %}
+
+        <li>
+            <a href="{{ url_for('pieceofitem', restaurant_id = item.restaurant_id, item_name = item.name)}}">{{item.name}}</a>
+        </li>
+{% endfor %}
+    </ul>
+</section>
+{% endblock%}
+
+
+
+
+ 

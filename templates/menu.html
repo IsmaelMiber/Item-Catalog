@@ -1,0 +1,31 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+{% block content %}	
+<h1>{{restaurant.name}}</h1>
+    {% with messages = get_flashed_messages()%}
+    {%if messages%}
+    <ul>
+        {%for message in messages%}
+        <li><strong>{{message}}</strong></li>
+        {%endfor%}
+    </ul>
+    {%endif%}
+    {%endwith%}
+<a href="{{ url_for('newMenuItem', restaurant_id = restaurant.id) }}">Create New Item</a>
+
+{%if items%}
+{% for i in items %}
+
+<div>
+
+<p><a href="{{ url_for('pieceofitem', restaurant_id = restaurant.id, item_name = i.name) }}">{{i.name}}</a></p>
+
+
+
+</div>
+{%else%}
+<p>You currencly have no menu items</p>
+
+{% endfor %}
+{%endif%}
+{%endblock%}

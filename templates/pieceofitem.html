@@ -1,0 +1,14 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+{% block content %}	
+
+<h1>{{creator.name}}</h1>
+<h2>{{restaurant.name}}</h2>
+<h4>{{item.name}}</h4>
+<h4>{{item.description}}</h4>
+<h4>{{item.price}} $</h4>
+<a href="{{ url_for('editMenuItem', item_name = item.name) }}">Edit</a>
+<a href="{{ url_for('deleteMenuItem', item_name = item.name) }}">Delete</a>
+<br>
+
+{%endblock%}

@@ -1,0 +1,25 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+{% block content %}	
+<h1> New Menu Item</h1>
+
+<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST'>
+
+<p>Name:</p>
+
+<input type='text' size='30' name='name'>
+    <p>Description:</p>
+<textarea name="description"></textarea>
+    <p>Price:</p>
+<input type="text" size="30" name="price">
+    <p>Course:</p>
+<input type="radio" name="course" required>General<br>
+<input type="radio" name="course" required>Appetizer <br>
+<input type="radio" name="course" required>Entree <br>
+<input type="radio" name="course" required>Dessert <br>
+<input type="radio" name="course" required>Beverage <br>
+<input type='submit' value='Create' required>
+
+</form>
+
+{%endblock%}

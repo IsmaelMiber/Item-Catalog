@@ -1,0 +1,27 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+{% block content %}	
+<h1> New Menu Item </h1>
+
+<form action="{{url_for('editMenuItem', item_name = editedItem.name )}}" method = 'POST'>
+
+<p>Name:</p>
+
+<input type='text' size='30' name='name' placeholder="{{editedItem.name}}">
+<p>Description:</p>
+<textarea name='description'>{{editedItem.description}}</textarea>
+<p>Price:</p>
+<input type='text' size='30' name='price' placeholder="{{editedItem.price}}">
+  <br><br>
+<input type="radio" name="course" required>Genral<br>
+<input type="radio" name="course" required>Appetizer <br>
+<input type="radio" name="course" required>Entree <br>
+<input type="radio" name="course" required>Dessert <br>
+<input type="radio" name="course" required>Beverage <br>
+<input type='submit' value='Create'>
+
+<a href="{{url_for('pieceofitem', restaurant_id=editedItem.restaurant_id, item_name = editedItem.name)}}">Cancel</a>
+
+</form>
+
+{%endblock%}

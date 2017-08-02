@@ -1,0 +1,96 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+{% block content %}	
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ restaurant.name }}
+			<figure class="creator">
+				<img src="{{ creator.picture}}">
+				<figcaption>{{ creator.name }}</figcaption>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+						{% for message in messages %}
+							 <li> <strong> {{ message }} </strong> </li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+	{% if items !=[] %}	
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<h2>Appetizers</h2>
+					{% for i in items %}
+						{% if i.course == 'Appetizer' %}
+							<div class="menu-item">
+								<h3><p><a href="{{ url_for('pieceofitem', restaurant_id = restaurant.id, item_name = i.name) }}">{{i.name}}</a></p></h3>
+								
+							</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-4">			
+				<h2>Entrees</h2>
+					{% for i in items %}
+						{% if i.course == 'Entree' %}
+						<div class="menu-item">
+							<h3><p><a href="{{ url_for('pieceofitem', restaurant_id = restaurant.id, item_name = i.name) }}">{{i.name}}</a></p>
+</h3>
+							
+						</div>
+						{% endif %}
+					{% endfor %}
+			</div>
+			<div class="col-md-3">
+				<h2>Desserts</h2>
+					{% for i in items %}
+						{% if i.course == 'Dessert' %}
+						<div class="menu-item">
+							<h3><p><a href="{{ url_for('pieceofitem', restaurant_id = restaurant.id, item_name = i.name) }}">{{i.name}}</a></p>
+</h3>
+							
+						</div>
+						{% endif %}
+					{% endfor %}
+				<h2>Beverages</h2>
+					{% for i in items %}
+						{% if i.course == 'Beverage' %}
+						<div class="menu-item">
+							<h3><p><a href="{{ url_for('pieceofitem', restaurant_id = restaurant.id, item_name = i.name) }}">{{i.name}}</a></p></h3>
+						{% endif %}
+					{% endfor %}
+                </div>
+			</div>
+			<div class="col-md-3">
+				<h2>General</h2>
+					{% for i in items %}
+						{% if i.course == 'General' %}
+							<div class="menu-item">
+								<h3><p><a href="{{ url_for('pieceofitem', restaurant_id = restaurant.id, item_name = i.name) }}">{{i.name}}</a></p></h3>
+
+							</div>
+						{% endif %}
+					{% endfor %}
+		</div>
+	{%endif%}
+{%endblock%}

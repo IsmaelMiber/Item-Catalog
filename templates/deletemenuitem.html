@@ -1,0 +1,14 @@
+{%extends 'main.html'%}
+{% include "header.html" %}
+
+{%block content%}
+<h1>Click Delete IF You Sure! {{deletedItem.name}}</h1>
+
+<form action="{{url_for('deleteMenuItem', item_name = deletedItem.name )}}" method = 'POST'>
+
+<input type='submit' value='DELETE'>
+<a href="{{url_for('pieceofitem', restaurant_id = deletedItem.restaurant_id, item_name = deletedItem.name)}}">Cancel</a>
+
+</form>
+
+{%endblock%}
