@@ -26,7 +26,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Restaurant Menu Application"
 
 engine = create_engine('sqlite:///restaurantmenuwithusers.db')
-#engine = create_engine('postgresql://catalog:password@localhost/catalog') *This is For Linux Sever Project*
+#engine = create_engine('postgresql://catalog:password@localhost/catalog') *This is For Linux Server Project*
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
